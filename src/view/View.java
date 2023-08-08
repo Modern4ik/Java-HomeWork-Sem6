@@ -2,6 +2,7 @@ package view;
 
 import controller.Controller;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class View {
     public static Scanner scanner;
@@ -13,34 +14,36 @@ public class View {
 
         int minValue = 1;
         int maxValue = 0;
-        String menu = "";
+        TreeMap<Integer, String> menu = Text.fillMainMenu(Text.mainMenu);
         String boundError = "";
 
         switch (inputMode) {
             case "main":
-                maxValue = 5;
-                menu = Text.mainMenu;
-                boundError = Text.mainBoundError;
+                maxValue = menu.size();
+                boundError = String.format("%s %d!", Text.menuBoundError, maxValue);
                 break;
             case "RAM":
-                maxValue = 3;
                 menu = Text.ramMenu;
-                boundError = Text.ramBoundError;
+
+                maxValue = menu.size();
+                boundError = String.format("%s %d!", Text.menuBoundError, maxValue);
                 break;
             case "HDD":
-                maxValue = 2;
                 menu = Text.hddMenu;
-                boundError = Text.hddBoundError;
+                maxValue = menu.size();
+                boundError = String.format("%s %d!", Text.menuBoundError, maxValue);
                 break;
             case "OS":
-                maxValue = 2;
                 menu = Text.osMenu;
-                boundError = Text.osBoundError;
+
+                maxValue = menu.size();
+                boundError = String.format("%s %d!", Text.menuBoundError, maxValue);
                 break;
             case "Color":
-                maxValue = 3;
                 menu = Text.colorMenu;
-                boundError = Text.colorBoundError;
+
+                maxValue = menu.size();
+                boundError = String.format("%s %d!", Text.menuBoundError, maxValue);
                 break;
         }
 
@@ -50,6 +53,7 @@ public class View {
             System.out.println(Text.inputMess);
 
             printMenu(menu);
+            System.out.println();
 
             if (scanner.hasNextInt()) {
 
@@ -81,8 +85,11 @@ public class View {
         scanner.reset();
         return input;
     }
+    
 
-    private static void printMenu(String menuText) {
-        System.out.println(menuText);
+    private static void printMenu(TreeMap<Integer, String> menuText) {
+        for (var el : menuText.entrySet()){
+            System.out.println(String.format("%d. %s", el.getKey(), el.getValue()));
+        }
     }
 }

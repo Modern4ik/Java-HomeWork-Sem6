@@ -1,8 +1,16 @@
 package controller;
 
+import model.Model;
 import view.*;
 
 public class Controller {
+   public static void syncDataBase(){
+      Model.getData(Text.ramMenu, "RAM");
+      Model.getData(Text.hddMenu, "HDD");
+      Model.getData(Text.osMenu, "OS");
+      Model.getData(Text.colorMenu, "Color");
+   }
+
    public static void startApp() {
       consoleClear();
 
@@ -55,4 +63,5 @@ public class Controller {
       } catch (InterruptedException ex) {
       }
    }
+
 }
