@@ -13,6 +13,7 @@ public class Text {
     public static String menuBoundError = "Номер должен быть от 1 до";
 
     public static String resultMessage = "По вашему запросу получены следующие модели: ";
+    public static String continueMessage = "Нажмите клавишу 'Enter' для возврата к меню...";
 
     public static TreeMap<Integer, String> mainMenu = new TreeMap<>();
     public static TreeMap<Integer, String> ramMenu = new TreeMap<>();

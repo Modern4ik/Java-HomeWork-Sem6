@@ -100,7 +100,7 @@ public class View {
             System.out.println(el);
         }
 
-        System.out.printf("Нажмите любую кнопку для возврата к меню...");
+        System.out.printf(Text.continueMessage);
         continueScanner.nextLine();
         continueScanner.reset();
     }
