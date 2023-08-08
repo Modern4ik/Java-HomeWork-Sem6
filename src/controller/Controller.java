@@ -4,6 +4,7 @@ import view.*;
 
 public class Controller {
    public static void startApp() {
+      consoleClear();
 
       System.out.print(Text.greeting);
       pause();
