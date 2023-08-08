@@ -1,11 +1,15 @@
 package view;
 
 import controller.Controller;
+import model.Notebook;
+
+import java.util.HashSet;
 import java.util.Scanner;
 import java.util.TreeMap;
 
 public class View {
     public static Scanner scanner;
+    public static Scanner continueScanner;
 
     public static int getUserChoice(String inputMode) {
         scanner = new Scanner(System.in);
@@ -85,11 +89,34 @@ public class View {
         scanner.reset();
         return input;
     }
-    
+
+    public static void printSearchResult(HashSet<Notebook> searchResult){
+        continueScanner = new Scanner(System.in);
+
+        System.out.println(Text.resultMessage);
+        System.out.println();
+
+        for (var el : searchResult){
+            System.out.println(el);
+        }
+
+        System.out.printf("Нажмите любую кнопку для возврата к меню...");
+        continueScanner.nextLine();
+        continueScanner.reset();
+    }
 
     private static void printMenu(TreeMap<Integer, String> menuText) {
-        for (var el : menuText.entrySet()){
-            System.out.println(String.format("%d. %s", el.getKey(), el.getValue()));
+        if (menuText.containsValue("GB")) {
+            int i = 1;
+
+            for (var el : menuText.entrySet()) {
+                System.out.println(String.format("%d. %s", i, Integer.toString(el.getKey()) + el.getValue()));
+                i++;
+            }
+        } else {
+            for (var el : menuText.entrySet()) {
+                System.out.println(String.format("%d. %s", el.getKey(), el.getValue()));
+            }
         }
     }
 }

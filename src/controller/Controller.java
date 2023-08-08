@@ -29,15 +29,31 @@ public class Controller {
          switch (mainInput) {
             case 1:
                secondInput = View.getUserChoice("RAM");
+
+               consoleClear();
+               View.printSearchResult(Model.getNotebooks(secondInput, Text.getFilter(Text.ramMenu), "RAM"));
+
                break;
             case 2:
                secondInput = View.getUserChoice("HDD");
+
+               consoleClear();
+               View.printSearchResult(Model.getNotebooks(secondInput, Text.getFilter(Text.hddMenu), "HDD"));
+
                break;
             case 3:
                secondInput = View.getUserChoice("OS");
+
+               consoleClear();
+               View.printSearchResult(Model.getNotebooks(secondInput, Text.osMenu, "OS"));
+
                break;
             case 4:
                secondInput = View.getUserChoice("Color");
+
+               consoleClear();
+               View.printSearchResult(Model.getNotebooks(secondInput, Text.colorMenu, "Color"));
+               
                break;
             case 5:
                consoleClear();
@@ -46,6 +62,7 @@ public class Controller {
                pause();
 
                View.scanner.close();
+               View.continueScanner.close();
                System.exit(0);
          }
       }

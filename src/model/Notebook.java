@@ -1,10 +1,16 @@
 package model;
 
 public class Notebook {
+
+    private String serialID;
     private String ram;
     private String diskCap;
     private String operSystem;
     private String color;
+
+    public String getSerialID(){
+        return this.serialID;
+    }
 
     public String getOperSystem(){
         return this.operSystem;
@@ -24,16 +30,18 @@ public class Notebook {
 
     @Override
     public String toString(){
-        return String.format("ОС: %s\n" + 
+        return String.format("SerialID: %s\n" +
+                             "ОС: %s\n" + 
                              "Цвет: %s\n" +
                              "Объем RAM: %s\n" +
-                             "Объем HDD: %s\n", this.operSystem,
+                             "Объем HDD: %s\n", this.serialID, this.operSystem,
                              this.color, this.ram, this.diskCap);
     }
 
     public Notebook() {}
 
-    public Notebook(String bookRam, String bookDiskCap, String bookOperSys, String bookColor) {
+    public Notebook(String bookSerialID, String bookRam, String bookDiskCap, String bookOperSys, String bookColor) {
+        this.serialID = bookSerialID;
         this.ram = bookRam;
         this.diskCap = bookDiskCap;
         this.operSystem = bookOperSys;
